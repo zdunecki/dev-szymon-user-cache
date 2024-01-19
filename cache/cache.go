@@ -14,19 +14,19 @@ type Cache[T interface{}] struct {
 	data     map[string]*T
 }
 
-func (c *Cache[T]) get(id string) (*T, bool) {
+func (c *Cache[T]) get(key string) (*T, bool) {
 	c.dataLock.RLock()
 	defer c.dataLock.RUnlock()
 
-	user, ok := c.data[id]
+	user, ok := c.data[key]
 	return user, ok
 }
 
-func (c *Cache[T]) set(id string, value *T) {
+func (c *Cache[T]) set(key string, value *T) {
 	c.dataLock.Lock()
 	defer c.dataLock.Unlock()
 
-	c.data[id] = value
+	c.data[key] = value
 }
 
 func (c *Cache[T]) GetOne(key string) (*T, error) {
