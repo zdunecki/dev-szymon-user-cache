@@ -33,4 +33,4 @@ go test ./...
 `sync.Map`
 - similar behaviour to `sync.RWMutex`, optimised under the hood at the cost of strict typing
 
-Decided to use `sync.RWMutex` for type safety.
+Decided to use `sync.RWMutex` for type safety and better read throughput compared to `sync.Mutex`.
