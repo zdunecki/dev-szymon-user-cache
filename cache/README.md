@@ -21,6 +21,7 @@ go test ./...
 ```
 
 **Considered approaches**
+
 `sync.Mutex`
 - it makes the cache slower as each request is handled synchronuously due to cache struct being locked on each read/write
 - would be suitable for write heavy usecase
@@ -32,4 +33,4 @@ go test ./...
 `sync.Map`
 - similar behaviour to `sync.RWMutex`, optimised under the hood at the cost of strict typing
 
-Decided to uses `sync.RWMutex` for type safety.
+Decided to use `sync.RWMutex` for type safety.
